@@ -12,19 +12,32 @@ $(document).ready(function() {
 	var map = L.map('map').setView(OTP.config.initLatLng, (OTP.config.initZoom || 13));
     map.attributionControl.setPrefix('');
 
-	// create OpenStreetMap tile layers for streets and aerial imagery
-	var osmLayer = L.tileLayer('http://{s}.tiles.mapbox.com/v3/' + OTP.config.osmMapKey + '/{z}/{x}/{y}.png', {
-        subdomains : ['a','b','c','d'],
-	    attribution: 'Street Map: <a href="http://mapbox.com/about/maps">Terms & Feedback</a>'
-	});
-    var aerialLayer = L.tileLayer('http://{s}.tiles.mapbox.com/v3/' + OTP.config.aerialMapKey + '/{z}/{x}/{y}.png', {
-        subdomains : ['a','b','c','d'],
+    var aerialLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg', {
+        subdomains: ['1', '2', '3', '4'],
+        maxZoom: 11,
         attribution : 'Satellite Map: <a href="http://mapbox.com/about/maps">Terms & Feedback</a>'
+    });
+
+    var osmLayer = L.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.png', {
+        subdomains: ['1', '2', '3', '4'],
+        attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>. Tiles courtesy of <a href="http://www.mapquest.com/">MapQuest</a>'
+    });
+
+    var cycleLayer = L.tileLayer('http://a.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', {
+        subdomains: ['a', 'b', 'c'],
+        attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>. Tiles courtesy of <a href="http://www.thunderforest.com/">Andy Allan</a>'
+    });
+    
+    var transportLayer = L.tileLayer('http://a.tile.thunderforest.com/transport/{z}/{x}/{y}.png', {
+        subdomains: ['a', 'b', 'c'],
+        attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>. Tiles courtesy of <a href="http://www.thunderforest.com/">Andy Allan</a>'
     });
 
     // create a leaflet layer control and add it to the map
     var baseLayers = {
         "Street Map" : osmLayer,
+        "Bicycle Map": cycleLayer,
+        "Public transport Map": transportLayer,
         "Satellite Map" : aerialLayer
     };
     L.control.layers(baseLayers).addTo(map);
