@@ -50,7 +50,10 @@
     "lib/stops-response-map-view.js",
     "lib/stops-response.js",
     "lib/stops.js",
-    "lib/utils.js"
+    "lib/utils.js",
+    "lib/router.js",
+    "lib/routers.js",
+    "lib/routers-request.js"
   ],
   "styles": [
     "lib/styles/map.css",
