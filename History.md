@@ -1,4 +1,11 @@
 
+## 0.13.2 — 2015-07-20
+
+* Show WALK in printable output
+* Add title to print icon
+* Fix next/previous
+* Fix mouseover preview
+
 ## 0.13.1 — 2015-07-02
 
 * Fix paths for images #56
