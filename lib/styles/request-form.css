@@ -50,3 +50,12 @@
 #showSettings {
   margin-top: 0;
 }
+
+.otp-languageSelect-icon {
+    /*margin: 3px 8px 3px 4px; */
+    width: 32px;
+    height: 32px;
+    float: left;
+    background-image: url('../images/language_select_icon_32.png');
+    background-repeat: no-repeat;
+}
